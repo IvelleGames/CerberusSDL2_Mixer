@@ -1,0 +1,82 @@
+
+#GLFW_COPY_LIBS+="libmikmod-2"
+#GLFW_COPY_LIBS+="libmodplug-1"
+#GLFW_COPY_LIBS+="SDL2_mixer"
+#GLFW_COPY_LIBS+="SDL2"
+#GLFW_COPY_LIBS+="zlib1.dll"
+
+#If HOST="linux"
+	#GLFW_GCC_LIB_OPTS+="-lSDL2_mixer"
+#Endif
+
+#If HOST="winnt"
+  #GLFW_GCC_LIB_OPTS+="-lSDL2_mixer"
+#Endif
+
+
+#If TARGET="glfw" Or TARGET="html5"
+
+	Import "native/sdl2mixer.${TARGET}.${LANG}"
+
+	EXTERN PRIVATE
+
+	#If TARGET="glfw" Or TARGET="html5"
+		Function SDL2_Mixer_Open()
+		Function SDL2_Mixer_Close()		
+		Function SDL2_Mixer_Stop()
+		
+		Function SDL2_Mixer_Play(path$, loop:Bool)
+		Function SDL2_Mixer_FadeIn(path$, loop:Bool, ms:Int)		
+
+		Function SDL2_Mixer_FadeOut(ms:Int)
+		Function SDL2_Mixer_Resume()
+		Function SDL2_Mixer_Pause()
+		Function SDL2_Mixer_SetVolume(volume:Int)
+		Function SDL2_Mixer_GetVolume:Int()
+	#End
+
+#Else
+	Error "Mikmod Only Available On GLFW/HTML5 targets!"
+#End 
+
+Public
+
+Function SDL2Mixer_Open()
+	SDL2_Mixer_Open()
+End Function
+
+Function SDL2Mixer_Close()
+	SDL2_Mixer_Close()
+End Function
+
+Function SDL2Mixer_Stop()
+	SDL2_Mixer_Stop()
+End Function
+
+Function SDL2Mixer_Play(path$, loop:Bool)
+	SDL2_Mixer_Play(path, loop)
+End Function
+
+Function SDL2Mixer_FadeIn(path$, loop:Bool, ms:Int)
+	SDL2_Mixer_FadeIn(path, loop, ms)
+End Function
+
+Function SDL2Mixer_FadeOut(ms:Int)
+	SDL2_Mixer_FadeOut(ms)
+End Function
+
+Function SDL2Mixer_Resume()
+	SDL2_Mixer_Resume()
+End Function
+
+Function SDL2Mixer_Pause()
+	SDL2_Mixer_Pause()
+End Function
+
+Function SDL2Mixer_SetVolume(v:Int)
+	SDL2_Mixer_SetVolume(v)
+End Function
+
+Function SDL2Mixer_GetVolume()
+	Return SDL2_Mixer_GetVolume()
+End Function

@@ -11,10 +11,10 @@ Import sdl2mixer
 Import mojo
 
 Function Main()
-	New TestMikmod()
+	New TestSDL2_Mixer()
 End Function
 
-Class TestMikmod Extends App
+Class TestSDL2_Mixer Extends App
 	
 	Method OnCreate()
 		SDL2Mixer_Open()
